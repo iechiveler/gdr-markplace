@@ -8,6 +8,7 @@ button.forEach(btn => {
 
         val.forEach(vals => {
             vals.removeAttribute("disabled");
+            console.log(vals);
         });
 
     });
