@@ -1,6 +1,20 @@
 const button = document.querySelectorAll(".lebutton");
 
+function hideBut(btn) {
+    btn.setAttribute("hidden", "");
+};
+
+function newBut(btn) {
+    const newBtn = document.createElement("button");
+    newBtn.innerHTML = "Aggiorna";
+    newBtn.name = "addValues";
+    newBtn.type = "submit";
+    newBtn.className = "btn btn-success"
+    btn.parentElement.append(newBtn);
+};
+
 button.forEach(btn => {
+
     btn.addEventListener('click', function (eventi) {
         const row = eventi.target.parentNode.parentNode;
         const val = row.querySelectorAll("#view");
@@ -10,22 +24,9 @@ button.forEach(btn => {
             
         });
 
-        hideBut();
-        newBut();
-
-        function hideBut() {
-            btn.setAttribute("hidden", "");
-        };
-
-        function newBut() {
-            const newBtn = document.createElement("button");
-            newBtn.innerHTML = "Aggiorna";
-            newBtn.name = "addValues";
-            newBtn.type = "submit";
-            newBtn.className = "btn btn-success"
-            btn.parentElement.append(newBtn);
-        };
-        
+        hideBut(btn);
+        newBut(btn);    
+            
     });
 
 });
