@@ -13,6 +13,8 @@ function newBut(btn) {
     btn.parentElement.append(newBtn);
 };
 
+let fetchLink = "./updateEnt.php";
+
 button.forEach(btn => {
 
     btn.addEventListener('click', function (eventi) {
@@ -26,7 +28,7 @@ button.forEach(btn => {
 
         hideBut(btn);
         newBut(btn);    
-            
+
     });
 
 });
