@@ -12,9 +12,6 @@ include '../includes/dbh.inc.php';
     if (isset($_SESSION["username"])) {
 
         if (isset($_GET["page"])) {
-            // if($_GET["page"] == "gestione"){
-            //     include './pages/page-gestione.inc.php';
-            // }
             if ($_GET["page"] == "ccertanim") {
                 include './resources/post-form-animali.php';
             }
@@ -22,7 +19,7 @@ include '../includes/dbh.inc.php';
                 include './resources/post-form-oggettistica.php';
             }
             if ($_GET["page"] == "searchcert") {
-                include './resources/searchEnt.php';
+                include './resources/search-anim-cert.php';
             }
         } else {
             if ($_SESSION["username"] == "raven") {

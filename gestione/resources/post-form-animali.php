@@ -50,7 +50,7 @@ echo '<option value="Femmina">Femmina</option>';
 echo '</select>';
 
 
-echo ' <select class="form-select mb-3 category-select" name="sceltcate" id="scelcate" required>';
+echo ' <select onchange="scelCategory()" class="form-select mb-3 category-select" name="sceltcate" id="scelcate" required>';
 echo '<option selected id="0">Scegli la categoria animale ...</option>';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
