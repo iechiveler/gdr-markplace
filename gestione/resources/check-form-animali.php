@@ -3,7 +3,7 @@
 if(!isset($_SESSION["username"])) {
     header("Location: ../login.php");
     exit();
-}
+};
     
 if(isset($_POST["submit"])){
     //Load inputs
@@ -70,5 +70,5 @@ if(isset($_POST["submit"])){
 
         header("Location: ../dashboard.php?page=ccertanim&res=$filePath");
         exit();
-    } 
-}
+    }; 
+};

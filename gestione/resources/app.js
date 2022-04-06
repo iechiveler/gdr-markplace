@@ -10,34 +10,29 @@ function displayarea() {
 }
 
 //Codice per assegnare razza al generatore di certificati
-function scelCategory() {
+function scelCategory(event) {
 
-        addEventListener("change", function (event) {
-        var scelcate = document.getElementById('scelcate');
-        var displayraces = document.getElementById('races');
-        let fetchLink = './resources/raceCall.php';
-        var category = event.target.value;
+    var scelcate = document.getElementById('scelcate');
+    var displayraces = document.getElementById('races');
+    let fetchLink = './resources/raceCall.php';
+    var category = event.target.value;
 
-        if (scelcate.onchange != "disabled") {
-            scelcate.onchange = displayraces.removeAttribute("disabled");
-        }
+    if (scelcate.onchange != "disabled") {
+        scelcate.onchange = displayraces.removeAttribute("disabled");
+    };
 
-        fetch(fetchLink, {
-            method: 'post',
-            headers: { "Content-Type": "application/json; charset=utf-8" },
-            body: category
-        })
-            .then(res => res.text())
-            .then(response => {
-                document.querySelector('.race-select').innerHTML = '<option selected>Scegli la razza animale ...</option>';
-                document.querySelector('.race-select').innerHTML += response;
-            })
-            .catch(err => {
-                console.log("u")
-                alert("sorry, there are no results for your search")
-            });
-    });
-}
+    fetch(fetchLink, {
+        method: 'post',
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: category
+    })
+        .then(res => res.text())
+        .then(response => {
+            document.querySelector('.race-select').innerHTML = '<option selected>Scegli la razza animale ...</option>';
+            document.querySelector('.race-select').innerHTML += response;
+        });
+
+};
 
 // Add event listener for certificate searchs
 function searchAnim() {
@@ -53,11 +48,27 @@ function searchAnim() {
             .then(res => res.text())
             .then(response => {
                 document.querySelector('.resp').innerHTML = response;
-            })
-            .catch(err => {
-                console.log("u")
-                alert("sorry, there are no results for your search")
             });
 
     });
 }
+
+// Select for Oggetti category
+function scelOggCategory(event) {
+
+    let fetchLink = './resources/object-call.php';
+    var category = event.target.value;
+
+    fetch(fetchLink, {
+        method: 'post',
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: category
+    })
+        .then(res => res.text())
+        .then(response => {
+            document.querySelector('.object-select').innerHTML = '<option selected>Scegli oggetto ...</option>';
+            document.querySelector('.object-select').innerHTML += response;
+
+        });
+
+};
