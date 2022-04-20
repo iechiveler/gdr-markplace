@@ -14,5 +14,4 @@ while($row = $result->fetch_assoc()) {
 }
 
 echo $race_options;
-$conn->close();
-?>
+// $conn->close();

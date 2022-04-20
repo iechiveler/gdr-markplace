@@ -23,7 +23,7 @@ $result = $conn->query($sql);
             <input type="text" class="form-control" name="NomeDestinatario" placeholder="Nome destinatario" required>
         </div>
         <select onchange="scelOggCategory(event)" class="form-select mb-3 category-select" required>
-            <option selected id="0">Scegli la categoria degli oggetti ...</option>
+            <option selected id="0">Scegli la categoria degli oggetti...</option>
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -34,7 +34,7 @@ $result = $conn->query($sql);
             ?>
         </select>
         <select class="form-select mb-3 object-select" name="objSel" id="objects">
-            <option selected>Scegli oggetto ...</option>
+            <option selected>Scegli oggetto...</option>
         </select>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="dedicaon" name="dedicasi" onclick="displayarea()">
@@ -47,3 +47,14 @@ $result = $conn->query($sql);
     </form>
 </div>
 <script src="./resources/app.js"></script>
+
+<?php
+$conn->close();
+if (isset($_GET["res"])) {
+    echo '<div class="container mt-5 w-50">
+            <div>
+                <p class="text-light">Nuovo certificato creato:</p>
+                <a href="' . $_GET["res"] . '" target="_blank">Link Certificato</a>
+            </div>
+        </div>';
+};

@@ -1,5 +1,5 @@
 <?php
-include_once './header.php';
+include './header.php';
 include '../includes/dbh.inc.php';
 ?>
 
@@ -25,9 +25,9 @@ include '../includes/dbh.inc.php';
             if ($_SESSION["username"] == "raven") {
                 include './includes/m_amount.inc.php';
                 echo '
-                        <div class="container mt-5 position-relative">
-                            <p class="text-light position-absolute top-0 start-0">Guadagni: ' . $totalsum . ' Axii</p>
-                        </div>
+                    <div class="container mt-5 position-relative">
+                        <p class="text-light position-absolute top-0 start-0">Guadagni: ' . $totalsum . ' Axii</p>
+                    </div>
                     ';
             }
         }

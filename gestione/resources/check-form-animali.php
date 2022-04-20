@@ -1,10 +1,7 @@
 <?php
 
-if(!isset($_SESSION["username"])) {
-    header("Location: ../login.php");
-    exit();
-};
-    
+include '../../includes/dbh.inc.php';
+
 if(isset($_POST["submit"])){
     //Load inputs
     $midgarDate = $_POST["DataMidgar"];
@@ -15,7 +12,6 @@ if(isset($_POST["submit"])){
     $detAnim = $_POST["DettagliAnimale"];
     $ageAnim = $_POST["EtàAnimale"];
     $sexAnim = $_POST["SessoAnimale"];
-    $chosCat = $_POST["sceltcate"];
     $raceAnim = $_POST["RazzaAnimale"];
     $dedText = $_POST["dedicatesto"];
 
@@ -26,17 +22,13 @@ if(isset($_POST["submit"])){
     preg_match('/^./', $sexAnim, $sexMatch);
     $newSex = $sexMatch[0];
 
-    // Load of template for update tables
-    include '../includes/update_tables.inc.php';
-    include '../includes/select_tables.inc.php';
-    
     // Generate filename.html base on destname
     preg_match('/^\S+/', $nameDest, $matches);
     $ext = "html";
     $fileNameU = strtolower($matches[0]);
     $fileName = $fileNameU. '_' .$nameAnim.'.'.$ext;
 
-    $path = '../../../certificati/'; 
+    $path = '../../certificati/'; 
     // Destination
     $fileDest = $path.$fileName;
     
@@ -46,29 +38,19 @@ if(isset($_POST["submit"])){
     // Adding file to specified path
     $fileTemp = fopen($fileDest, 'w') or die ('Impossibile creare il file');
 
-    
-    
-    // Check on dedi checkbox
-    if ($dedText != NULL) {
-        include './tamplates/tmp_anim_dedi.php';
+    // Load of template for update tables
+    include '../includes/select_tables.inc.php';
+    include '../includes/update_tables.inc.php';
 
-        // Scrittura sul file 
-        fwrite($fileTemp, $fileRaw);
-        // Chiusura del file
-        fclose($fileTemp);
+    include './tamplates/tmp_anim.php';
 
-        header("Location: ../dashboard.php?page=ccertanim&res=$filePath");
-        exit();
+    // Scrittura sul file 
+    fwrite($fileTemp, $fileRaw);
+    // Chiusura del file
+    fclose($fileTemp);
 
-    } else {
-        include './tamplates/tmp_anim_no_dedi.php';
+    $conn->close();
 
-        // Scrittura sul file 
-        fwrite($fileTemp, $fileRaw);
-        // Chiusura del file
-        fclose($fileTemp);
-
-        header("Location: ../dashboard.php?page=ccertanim&res=$filePath");
-        exit();
-    }; 
+    header("Location: ../dashboard.php?page=ccertanim&res=$filePath");
+    exit(); 
 };
