@@ -1,10 +1,5 @@
 <?php
-include_once 'header.php';
-?>
-
-
-<?php
-
+include 'header.php';
 include './includes/dbh.inc.php';
 
 $sql = "SELECT oggettistica_categoria.id_categoria, oggettistica_categoria.nome_categoria
@@ -22,23 +17,18 @@ $result = $conn->query($sql);
             }
         } else {
             echo '<div class="container my-5 align-items-center">
-                            <div class="row mx-auto">
-                                <div class="alert alert-danger" role="alert">
-                                    Sito in costruzione.
-                                </div>
-                            </div>
-                        </div>';
+                    <div class="row mx-auto">
+                        <div class="alert alert-danger" role="alert">
+                            Sito in costruzione.
+                        </div>
+                    </div>
+                </div>';
         }
-        $conn->close();
         ?>
     </div>
 </div>
 
-
-
 <?php
-
-include './includes/dbh.inc.php';
 
 if (isset($_GET["id"])) {
     $val = $_GET["id"];
@@ -79,8 +69,6 @@ if (isset($_GET["id"])) {
     echo '</div>
         </div>';
 }
-?>
 
-<?php
-include_once 'footer.php';
+include 'footer.php';
 ?>

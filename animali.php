@@ -1,9 +1,5 @@
 <?php
-include_once 'header.php';
-?>
-
-<?php
-
+include 'header.php';
 include './includes/dbh.inc.php';
 
 $sql = "SELECT animali_categoria.id_categoria, animali_categoria.nome
@@ -21,21 +17,18 @@ $result = $conn->query($sql);
             }
         } else {
             echo '<div class="container my-5 align-items-center">
-                            <div class="row mx-auto">
-                                <div class="alert alert-danger" role="alert">
-                                    Sito in costruzione.
-                                </div>
-                            </div>
-                        </div>';
+                    <div class="row mx-auto">
+                        <div class="alert alert-danger" role="alert">
+                            Sito in costruzione.
+                        </div>
+                    </div>
+                </div>';
         }
-        $conn->close();
         ?>
     </div>
 </div>
 
 <?php
-
-include './includes/dbh.inc.php';
 
 if (isset($_GET["id"])) {
     $val = $_GET["id"];
@@ -66,17 +59,15 @@ if (isset($_GET["id"])) {
         }
     } else {
         echo '
-                <div class="row mx-auto">
-                    <div class="alert alert-danger" role="alert">Catalogo in allestimento.</div>        
-                </div>';
+            <div class="row mx-auto">
+                <div class="alert alert-danger" role="alert">Catalogo in allestimento.</div>        
+            </div>';
     }
     $conn->close();
 
     echo '</div>
         </div>';
 }
-?>
 
-<?php
-include_once 'footer.php';
+include 'footer.php';
 ?>

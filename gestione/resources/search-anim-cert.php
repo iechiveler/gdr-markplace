@@ -14,5 +14,3 @@ if (!isset($_SESSION["username"])) {
 </div>
 <div class="resp container"></div>
 <script src="./resources/app.js"></script>
-
-<?php
