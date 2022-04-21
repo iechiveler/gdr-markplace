@@ -32,7 +32,6 @@ session_start();
                                 <li><a class="dropdown-item" href="./dashboard.php?page=ccertanim">Crea certificati | Animali</a></li>
                                 <li><a class="dropdown-item" href="./dashboard.php?page=ccertogg">Crea certificati | Oggettistica</a></li>
                                 <li><a class="dropdown-item" href="./dashboard.php?page=searchcert">Cerca Certificati</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                             </ul>
                         </div>
                         <a class="nav-link position-absolute end-0 me-3 btn btn-danger text-light" href="./includes/logout.inc.php">Logout</a>

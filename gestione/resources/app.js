@@ -44,7 +44,7 @@ function searchAnim() {
             });
 
     });
-}
+};
 
 // Select for Oggetti category
 function scelOggCategory(event) {

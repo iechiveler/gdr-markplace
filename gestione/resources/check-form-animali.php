@@ -1,8 +1,8 @@
 <?php
 
-include '../../includes/dbh.inc.php';
 
 if(isset($_POST["submit"])){
+    include '../includes/functions.inc.php';
     //Load inputs
     $midgarDate = $_POST["DataMidgar"];
     $nameAcqui = $_POST["NomeAcquirente"];
@@ -17,6 +17,7 @@ if(isset($_POST["submit"])){
 
     // Data explode of $raceAnim using pipe as delimitator
     $array = explode("|", $raceAnim, 2);
+    $nRace = $array[1];
 
     // Data trim for $sexAnim
     preg_match('/^./', $sexAnim, $sexMatch);
@@ -39,8 +40,10 @@ if(isset($_POST["submit"])){
     $fileTemp = fopen($fileDest, 'w') or die ('Impossibile creare il file');
 
     // Load of template for update tables
-    include '../includes/select_tables.inc.php';
-    include '../includes/update_tables.inc.php';
+    $values = array($nRace, $nameAcqui, $nameAnim, $nameDest, $newSex, $ageAnim, $filePath, $midgarDate, $nameAnimCat);
+
+    selectTableAnimal($nameAnimCat);
+    updateTableAnimal($values);
 
     include './tamplates/tmp_anim.php';
 
@@ -48,8 +51,6 @@ if(isset($_POST["submit"])){
     fwrite($fileTemp, $fileRaw);
     // Chiusura del file
     fclose($fileTemp);
-
-    $conn->close();
 
     header("Location: ../dashboard.php?page=ccertanim&res=$filePath");
     exit(); 

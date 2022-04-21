@@ -3,6 +3,7 @@
 include '../../includes/dbh.inc.php';
 
 if (isset($_POST["submit"])) {
+    include '../includes/functions.inc.php';
     //Load inputs
     $midgarDate = $_POST["DataMidgar"];
     $nameAcqui = $_POST["NomeAcquirente"];
@@ -27,8 +28,9 @@ if (isset($_POST["submit"])) {
     $fileTemp = fopen($fileDest, 'w') or die('Impossibile creare il file');
 
     // Load of template for update tables
-    include '../includes/select-obj-tables.inc.php';
-    include '../includes/insert-tables.inc.php';
+    selectTableObj($objectSelection);
+    insertTableObj($row, $id_catalogo, $nameAcqui, $nameDest, $midgarDate, $dedText, $filePath);
+    
 
 
     include './tamplates/tmp-obj.php';
@@ -37,8 +39,6 @@ if (isset($_POST["submit"])) {
     fwrite($fileTemp, $fileRaw);
     // Chiusura del file
     fclose($fileTemp);
-
-    $conn->close();
 
     header("Location: ../dashboard.php?page=ccertogg&res=$filePath");
     exit(); 

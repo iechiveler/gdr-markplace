@@ -1,9 +1,12 @@
 <?php
+
+$row = mysqli_fetch_row($result);
+
 $urlimg = $row[0];
 $race = $array[0];
 $details = $row[1];
 
-if ($dedText |= NULL) {
+if ($dedText != NULL) {
     $var1 = '<div id="dedicar">
     <p>'. $dedText .'</p>
 </div>
