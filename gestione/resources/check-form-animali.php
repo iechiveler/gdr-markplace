@@ -1,7 +1,7 @@
 <?php
 
 
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     include '../includes/functions.inc.php';
     //Load inputs
     $midgarDate = $_POST["DataMidgar"];
@@ -27,17 +27,17 @@ if(isset($_POST["submit"])){
     preg_match('/^\S+/', $nameDest, $matches);
     $ext = "html";
     $fileNameU = strtolower($matches[0]);
-    $fileName = $fileNameU. '_' .$nameAnim.'.'.$ext;
+    $fileName = $fileNameU . '_' . $nameAnim . '.' . $ext;
 
-    $path = '../../certificati/'; 
+    $path = '../../certificati/';
     // Destination
-    $fileDest = $path.$fileName;
-    
+    $fileDest = $path . $fileName;
+
     // Path link
-    $filePath = 'https://oltreilfiume.altervista.org/'.$fileDest;
+    $filePath = 'https://oltreilfiume.altervista.org/' . $fileDest;
 
     // Adding file to specified path
-    $fileTemp = fopen($fileDest, 'w') or die ('Impossibile creare il file');
+    $fileTemp = fopen($fileDest, 'w') or die('Impossibile creare il file');
 
     // Load of template for update tables
     $values = array($nRace, $nameAcqui, $nameAnim, $nameDest, $newSex, $ageAnim, $filePath, $midgarDate, $nameAnimCat);
@@ -53,5 +53,5 @@ if(isset($_POST["submit"])){
     fclose($fileTemp);
 
     header("Location: ../dashboard.php?page=ccertanim&res=$filePath");
-    exit(); 
+    exit();
 };

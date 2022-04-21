@@ -30,7 +30,7 @@ if (isset($_POST["submit"])) {
     // Load of template for update tables
     selectTableObj($objectSelection);
     insertTableObj($row, $id_catalogo, $nameAcqui, $nameDest, $midgarDate, $dedText, $filePath);
-    
+
 
 
     include './tamplates/tmp-obj.php';
@@ -41,5 +41,5 @@ if (isset($_POST["submit"])) {
     fclose($fileTemp);
 
     header("Location: ../dashboard.php?page=ccertogg&res=$filePath");
-    exit(); 
+    exit();
 };
