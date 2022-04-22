@@ -25,15 +25,40 @@ if (isset($_SESSION["username"])) {
         if ($_SESSION["username"] == "raven") {
             include './includes/functions.inc.php';
 ?>
-            <div class="container mt-5 position-relative">
-                <p class="text-light position-absolute top-0 start-0">Guadagni dalla vendita animali: <?php moneyamount($conn) ?> Axii</p>
-            </div>
-            <div class="container mt-5 position-relative">
-                <p class="text-light position-absolute top-0 start-0">Guadagni dalla vendita degli oggetti: <?php moneyamountobj($conn) ?> Axii</p>
-            </div>
-            <div class="container mt-5 position-relative">
-                <p class="text-light position-absolute top-0 start-0">Guadagni totali: <?php totalmoney($totalsum1, $totalsum2) ?> Axii</p>
-            </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Guadagni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Animali:</td>
+                        <td><?php moneyamount($conn) ?> Axii</td>
+                    </tr>
+                    <tr>
+                        <td>Oggetti:</td>
+                        <td><?php moneyamountobj($conn) ?> Axii</td>
+                    </tr>
+                    <tr>
+                        <td>Totale:</td>
+                        <td><?php totalmoney($totalsum1, $totalsum2) ?> Axii</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            
+        </div>
+        <div class="col">
+            
+        </div>
+    </div>
+</div>
 <?php
         };
     };
